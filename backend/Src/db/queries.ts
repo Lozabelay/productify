@@ -1,6 +1,7 @@
 import { db } from "./index";
 import { eq } from "drizzle-orm";
 import {
+
   users,
   comments,
   products,
@@ -20,25 +21,21 @@ export const getUserById = async (id: string) => {
 };
 
 export const updateUser = async (id: string, data: Partial<NewUser>) => {
-  const existingUser = await getUserById(id);
-  if (!existingUser) {
+  const [user] = await db
+    .update(users)
+    .set(data)
+    .where(eq(users.id, id))
+    .returning();
+
+  if (!user) {
     throw new Error(`User with id ${id} not found`);
   }
 
-  const [user] = await db.update(users).set(data).where(eq(users.id, id)).returning();
   return user;
 };
 
 // upsert => create or update
-
 export const upsertUser = async (data: NewUser) => {
-  // this is what we have done first
-  // const existingUser = await getUserById(data.id);
-  // if (existingUser) return updateUser(data.id, data);
-
-  // return createUser(data);
-
-  // and this is what CR suggested
   const [user] = await db
     .insert(users)
     .values(data)
@@ -47,6 +44,7 @@ export const upsertUser = async (data: NewUser) => {
       set: data,
     })
     .returning();
+
   return user;
 };
 
@@ -59,8 +57,7 @@ export const createProduct = async (data: NewProduct) => {
 export const getAllProducts = async () => {
   return db.query.products.findMany({
     with: { user: true },
-    orderBy: (products, { desc }) => [desc(products.createdAt)], // desc means: you will see the latest products first
-    // the square brackets are required because Drizzle ORM's orderBy expects an array, even for a single column.
+    orderBy: (products, { desc }) => [desc(products.createdAt)],
   });
 };
 
@@ -85,23 +82,33 @@ export const getProductsByUserId = async (userId: string) => {
   });
 };
 
-export const updateProduct = async (id: string, data: Partial<NewProduct>) => {
-  const existingProduct = await getProductById(id);
-  if (!existingProduct) {
+export const updateProduct = async (
+  id: string,
+  data: Partial<NewProduct>
+) => {
+  const [product] = await db
+    .update(products)
+    .set(data)
+    .where(eq(products.id, id))
+    .returning();
+
+  if (!product) {
     throw new Error(`Product with id ${id} not found`);
   }
 
-  const [product] = await db.update(products).set(data).where(eq(products.id, id)).returning();
   return product;
 };
 
 export const deleteProduct = async (id: string) => {
-  const existingProduct = await getProductById(id);
-  if (!existingProduct) {
+  const [product] = await db
+    .delete(products)
+    .where(eq(products.id, id))
+    .returning();
+
+  if (!product) {
     throw new Error(`Product with id ${id} not found`);
   }
 
-  const [product] = await db.delete(products).where(eq(products.id, id)).returning();
   return product;
 };
 
@@ -112,12 +119,15 @@ export const createComment = async (data: NewComment) => {
 };
 
 export const deleteComment = async (id: string) => {
-  const existingComment = await getCommentById(id);
-  if (!existingComment) {
+  const [comment] = await db
+    .delete(comments)
+    .where(eq(comments.id, id))
+    .returning();
+
+  if (!comment) {
     throw new Error(`Comment with id ${id} not found`);
   }
 
-  const [comment] = await db.delete(comments).where(eq(comments.id, id)).returning();
   return comment;
 };
 
@@ -127,3 +137,4 @@ export const getCommentById = async (id: string) => {
     with: { user: true },
   });
 };
+//  we update   the  first  code
