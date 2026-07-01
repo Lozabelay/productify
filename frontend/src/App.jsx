@@ -14,13 +14,7 @@ function App() {
 
       <button className="btn btn-primary">Click me</button>
 
-      <SignedOut>
-        <SignInButton mode="modal" />
-      </SignedOut>
-
-      <SignedIn>
-        <SignOutButton />
-      </SignedIn>
+      
     </div>
   );
 }
