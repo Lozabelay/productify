@@ -1,4 +1,11 @@
-import { SignInButton } from "@clerk/react";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+  SignOutButton
+} from "@clerk/clerk-react";
 
 function App() {
   return (
@@ -7,7 +14,13 @@ function App() {
 
       <button className="btn btn-primary">Click me</button>
 
-      <SignInButton />
+      <SignedOut>
+        <SignInButton mode="modal" />
+      </SignedOut>
+
+      <SignedIn>
+        <SignOutButton />
+      </SignedIn>
     </div>
   );
 }
