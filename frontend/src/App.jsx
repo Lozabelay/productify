@@ -1,14 +1,15 @@
+import { SignInButton } from "@clerk/react";
+
 function App() {
-  
   return (
-    <div className="">
-      <h1 className="text-blue-500"> welcome to productify</h1>
+    <div>
+      <h1 className="text-blue-500">Welcome to Productify</h1>
 
-      <button className=" btn btn-primary" > Click me</button>
+      <button className="btn btn-primary">Click me</button>
 
+      <SignInButton />
     </div>
-  )
-  
-  }   
+  );
+}
 
- export default App ;
+export default App;
