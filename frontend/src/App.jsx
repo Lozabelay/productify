@@ -9,12 +9,10 @@ import {
 
 function App() {
   return (
-    <div>
-      <h1 className="text-blue-500">Welcome to Productify</h1>
-
-      <button className="btn btn-primary">Click me</button>
-
-      
+    <div className="min-h-screen bg-base-100">
+     < Navbar />
+     <main className= "max-w-5xl mx-auto px-4 py-8">
+      </main>
     </div>
   );
 }
