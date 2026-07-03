@@ -1,7 +1,8 @@
-function CreatePage() {
+
+function EditProductPage() {
   return (
-    <div>CreatePage</div>
+    <div>EditProductPage</div>
   )
 }
 
-export default CreatePage
+export default EditProductPage
