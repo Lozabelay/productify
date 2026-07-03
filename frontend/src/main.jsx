@@ -19,7 +19,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
       <BrowserRouter>
-        <App />
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
       </BrowserRouter>
     </ClerkProvider>
   </React.StrictMode>
