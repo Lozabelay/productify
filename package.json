@@ -1,5 +1,25 @@
 {
   "dependencies": {
     "@clerk/express": "^1.7.60"
-  }
+  },
+  "name": "pern_project01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix frontend  && npm run build --prefix frontend  && npm run build --prefix backend ",
+    "start": " npm run db:push --prefix backend && npm run start --prefix backend "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lozabelay/productify.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Lozabelay/productify/issues"
+  },
+  "homepage": "https://github.com/Lozabelay/productify#readme"
 }
