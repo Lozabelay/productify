@@ -26,6 +26,7 @@ https://productify-1-i9lq.onrender.com
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - React
 - TypeScript
 - Vite
@@ -37,6 +38,7 @@ https://productify-1-i9lq.onrender.com
 - Clerk Authentication
 
 ### Backend
+
 - Node.js
 - Express.js
 - TypeScript
@@ -98,8 +100,8 @@ DATABASE_URL=your_database_url
 PORT=3000
 NODE_ENV=development
 
-CLERK_SECRET_KEY=your_clerk_secret_key
-CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=*********_secret_key
+CLERK_PUBLISHABLE_KEY=*******_publishable_key
 
 FRONTEND_URL=http://localhost:5173
 ```
@@ -176,4 +178,3 @@ GitHub:
 https://github.com/Lozabelay
 
 ---
-
