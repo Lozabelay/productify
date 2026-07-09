@@ -96,7 +96,7 @@ npm install --prefix frontend
 ### Backend (.env)
 
 ```env
-DATABASE_URL=your_database_url
+DATABASE_URL=*****database_url
 PORT=3000
 NODE_ENV=development
 
